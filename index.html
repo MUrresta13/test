@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Make Your Character</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <header class="wrap">
+    <h1>Create Your Character</h1>
+    <p class="sub">Pick a name, class, look, and starting stats.</p>
+  </header>
+
+  <main class="wrap grid">
+    <section class="card">
+      <form id="creatorForm" novalidate>
+        <label>
+          Name
+          <input id="charName" name="charName" type="text" maxlength="20" placeholder="e.g., Michael" required />
+        </label>
+
+        <label>
+          Class
+          <select id="charClass" name="charClass">
+            <option value="Warrior">Warrior</option>
+            <option value="Rogue">Rogue</option>
+            <option value="Mage">Mage</option>
+            <option value="Ranger">Ranger</option>
+          </select>
+        </label>
+
+        <div class="row">
+          <label class="half">
+            Body Color
+            <input id="charColor" name="charColor" type="color" value="#0aa5ff" />
+          </label>
+          <label class="half">
+            Accent Color
+            <input id="accentColor" name="accentColor" type="color" value="#ffd166" />
+          </label>
+        </div>
+
+        <fieldset>
+          <legend>Stats (10 points total)</legend>
+          <div class="stat">
+            <span>Strength</span>
+            <input id="str" type="range" min="0" max="10" value="3" />
+            <output id="strOut">3</output>
+          </div>
+          <div class="stat">
+            <span>Agility</span>
+            <input id="agi" type="range" min="0" max="10" value="3" />
+            <output id="agiOut">3</output>
+          </div>
+          <div class="stat">
+            <span>Intellect</span>
+            <input id="int" type="range" min="0" max="10" value="4" />
+            <output id="intOut">4</output>
+          </div>
+          <p class="muted">Remaining Points: <b id="pointsLeft">0</b></p>
+        </fieldset>
+
+        <div class="actions">
+          <button type="button" id="randomizeBtn">Randomize</button>
+          <button type="submit" class="primary">Confirm & Enter Game</button>
+        </div>
+      </form>
+    </section>
+
+    <section class="card">
+      <h2>Live Preview</h2>
+      <canvas id="preview" width="320" height="200" aria-label="Character preview"></canvas>
+      <div class="previewText">
+        <p><b>Name:</b> <span id="namePrev">—</span></p>
+        <p><b>Class:</b> <span id="classPrev">—</span></p>
+        <p><b>STR/AGI/INT:</b> <span id="statsPrev">0 / 0 / 0</span></p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="wrap muted">Data is saved to your browser via localStorage.</footer>
+
+  <script src="./js/creator.js" defer></script>
+</body>
+</html>
